@@ -90,14 +90,27 @@ nav {
   height: 8vh;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition:opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  transform: translate3d(0, 0, 0);  
+.fade-enter-active {
+  transition:opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);  
 }
-.fade-enter-from,
+.fade-enter-from {
+  opacity: 0;
+  transform: translate3d(0, -60px, 0);
+}
+.fade-enter-to {
+  opacity: 1;
+  transform: translate3d(0, 0px, 0);
+}
+.fade-leave-active {
+  transition:opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.fade-leave-from {
+  opacity: 1;
+  transform: translate3d(0, 0px, 0);
+}
 .fade-leave-to {
   opacity: 0;
+  transform: translate3d(0, 60px, 0);
 }
 
 </style>

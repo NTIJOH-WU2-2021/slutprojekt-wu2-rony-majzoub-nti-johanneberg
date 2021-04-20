@@ -1,16 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <IngredientSearch/>
+  <header>
+    <nav>
+      <router-link class="header-item" to="/">Recipes</router-link>
+      <router-link class="header-item" to="/favorites">Favorites</router-link>
+      <router-link class="header-item" to="/tips">Tips</router-link>
+    </nav>
+  </header>
+  <main>
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import IngredientSearch from './components/IngredientSearch.vue'
 
 export default {
   name: 'App',
-  components: { HelloWorld, IngredientSearch }
 }
 </script>
 
@@ -21,11 +27,77 @@ export default {
   font-family: 'Inter', 'Lato', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: rgba(0, 0, 0, 0.87);
   background-color: #F2F2F7;
 }
 body {
   background-color: #F2F2F7;
 }
+main {
+  padding: 0 10rem 0 10rem;
+  margin-top: 12vh;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+header {
+  background-color: #F2F2F7;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  z-index: 1;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.45, 0.1, 0.25, 1);
+  padding: 0 5rem 0 4.5rem;
+}
+.header-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  opacity: 0.87;
+  font-family: 'Inter', 'Lato', Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0 1rem 0 0.5rem;
+  height: 90%;
+  transition-duration: 100ms;
+  transition-timing-function: cubic-bezier(0.45, 0.1, 0.25, 1);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.header-item:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+  transition-duration: 100ms;
+  transition-timing-function: cubic-bezier(0.45, 0.1, 0.25, 1);
+  border-radius: 2px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition:opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1),transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translate3d(0, 0, 0);  
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>

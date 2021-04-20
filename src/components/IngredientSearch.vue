@@ -4,7 +4,7 @@
       data-cy="city"
       class="input"
       type="search"
-      placeholder="Köttkulla.."
+      placeholder="Add your ingredients."
       @keyup.enter="onSearchClick"
       v-model="search"
     />
@@ -18,7 +18,10 @@
 // import config from '@/appConfig.js';
 export default {
   name: "IngredientSearch",
-}
+  props: {
+    placeholder: String,
+  },
+};
 </script>
 
 <style>
@@ -29,6 +32,7 @@ export default {
   align-items: center;
   margin-bottom: 1em;
   gap: 0.5rem;
+  float: right;
 }
 
 .input {

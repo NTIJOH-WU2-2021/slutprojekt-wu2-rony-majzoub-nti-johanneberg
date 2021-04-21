@@ -7,9 +7,11 @@
     </nav>
   </header>
   <main>
-    <transition name="fade" mode="out-in">
-      <router-view />
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in" appear>
+        <component :key="$route.fullPath" :is="Component" />
+      </transition>
+    </router-view>
   </main>
 </template>
 
@@ -95,22 +97,22 @@ nav {
 }
 .fade-enter-from {
   opacity: 0;
-  transform: translate3d(0, -60px, 0);
+  transform: translateY(-60px);
 }
 .fade-enter-to {
   opacity: 1;
-  transform: translate3d(0, 0px, 0);
+  transform: translateY(0px);
 }
 .fade-leave-active {
   transition:opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .fade-leave-from {
   opacity: 1;
-  transform: translate3d(0, 0px, 0);
+  transform: translateY(0px);
 }
 .fade-leave-to {
   opacity: 0;
-  transform: translate3d(0, 60px, 0);
+  transform: translateY(60px);
 }
 
 </style>

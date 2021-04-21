@@ -1,6 +1,8 @@
 <template>
+  <div>
     <h1>Welcome to your Favorites.</h1>
     <RecipeCard />
+  </div>
 </template>
 
 <script>

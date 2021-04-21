@@ -6,7 +6,7 @@
       type="search"
       placeholder="Add your ingredients."
       @keyup.enter="onSearchClick"
-      v-model="search"
+      
     />
     <button @click="onSearchClick" class="search">
       <img src="..\assets\search-24px.svg" alt="">

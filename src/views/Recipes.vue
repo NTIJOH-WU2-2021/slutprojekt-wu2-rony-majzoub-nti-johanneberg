@@ -1,9 +1,11 @@
 <template>
-    <div class="top-row">
-        <h1>Welcome to your Recipes.</h1>
-        <IngredientSearch />
+    <div>
+        <div class="top-row">
+            <h1>Welcome to your Recipes.</h1>
+            <IngredientSearch />
+        </div>
+        <RecipeCard />
     </div>
-    <RecipeCard />
 </template>
 
 <script>

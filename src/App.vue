@@ -97,14 +97,14 @@ nav {
 }
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(-60px);
+  transform: translateY(-50px);
 }
 .fade-enter-to {
   opacity: 1;
   transform: translateY(0px);
 }
 .fade-leave-active {
-  transition:opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition:opacity 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19),transform 0.225s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 .fade-leave-from {
   opacity: 1;
@@ -112,7 +112,7 @@ nav {
 }
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(60px);
+  transform: translateY(50px);
 }
 
 </style>

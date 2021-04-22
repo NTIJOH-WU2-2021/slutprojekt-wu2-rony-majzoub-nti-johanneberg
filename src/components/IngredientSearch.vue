@@ -6,7 +6,7 @@
       type="search"
       placeholder="Add your ingredients."
       @keyup.enter="onSearchClick"
-      
+      v-model="search"
     />
     <button @click="onSearchClick" class="search">
       <img src="..\assets\search-24px.svg" alt="">
@@ -33,6 +33,11 @@ export default {
   margin-bottom: 1em;
   gap: 0.5rem;
   float: right;
+  flex-direction: row-reverse;
+  background-color: #F6F6F6;
+  border-radius: 100px;
+  border: 1px solid #E8E8E8;
+  box-sizing: border-box;
 }
 
 .input {
@@ -40,8 +45,6 @@ export default {
   padding: 8px 10px;
   border: none;
   flex: 1;
-  background-color: #F6F6F6;
-  border-radius: 100px;
   font-family: 'Inter', 'Lato', Avenir, Helvetica, Arial, sans-serif;
   color: rgba(0, 0, 0, 0.60);
   font-style: normal;
@@ -49,7 +52,8 @@ export default {
   font-size: 16px;
   line-height: 19px;
   height: 48px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.12), 0px 1px 3px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  border-radius: 100px;
 }
 
 .search {

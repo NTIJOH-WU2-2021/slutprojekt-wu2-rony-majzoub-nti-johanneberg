@@ -15,6 +15,7 @@
     background: #F2F2F7;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
     border-radius: 8px;
+    margin-bottom: 24px;
 }
 .parent-group img {
     align-self: center;
@@ -26,5 +27,23 @@
     display: flex;
     flex-direction: column;
     padding: 0px 32px;
+}
+
+h2 {
+    font-family: 'Inter', 'Lato', Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+h3 {
+    font-family: 'Lato', 'Inter', Avenir, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.6);
+    font-style: normal;
+    font-weight: normal;
 }
 </style>

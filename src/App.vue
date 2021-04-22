@@ -35,6 +35,15 @@ export default {
 body {
   background-color: #F2F2F7;
 }
+
+h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 58px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
 main {
   padding: 0 10rem 0 10rem;
   margin-top: 12vh;

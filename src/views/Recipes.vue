@@ -5,6 +5,7 @@
             <IngredientSearch />
         </div>
         <RecipeCard />
+        <RecipeCard />
     </div>
 </template>
 

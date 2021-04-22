@@ -1,11 +1,11 @@
 <template>
-    <div class="parent-group">
+    <router-link class="parent-group" :to="`/ingredients`">
         <img src="../assets/logo.png" alt="">
         <div class="text-group">
             <h2>Fancy Recipe</h2>
             <h3>Smaller instructions here.....</h3>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <style scoped>
@@ -16,6 +16,7 @@
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
     border-radius: 8px;
     margin-bottom: 24px;
+    text-decoration: none;
 }
 .parent-group img {
     align-self: center;

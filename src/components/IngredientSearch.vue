@@ -66,7 +66,7 @@ export default {
   height: 48px;
   width: 48px;
 }
-img {
+.search img {
   height: 36px;
   color: #666666;
 }

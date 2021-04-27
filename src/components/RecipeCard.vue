@@ -1,5 +1,5 @@
 <template>
-    <router-link class="parent-group" :to="`/ingredients`">
+    <router-link class="parent-group" :to="`/instructions`">
         <img src="../assets/logo.png" alt="">
         <div class="text-group">
             <h2>Fancy Recipe</h2>

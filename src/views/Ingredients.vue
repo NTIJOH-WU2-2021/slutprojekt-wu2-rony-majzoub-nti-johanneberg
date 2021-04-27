@@ -1,19 +1,22 @@
 <template>
     <div>
         <div class="top-row">
-            <h1>Fancy Recipe</h1>
-            <img src="../assets/star_outline.svg" alt="">
+            <h1>Found what you need?</h1>
+            <IngredientSearch />
         </div>
+        <IngredientCard />
         <IngredientCard />
     </div>
 </template>
 
 <script>
+import IngredientSearch from "@/components/IngredientSearch.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 export default {
-  name: 'Ingredients',
+  name: 'Recipes',
   components: {
+      IngredientSearch,
       IngredientCard,
   },
 }
@@ -24,10 +27,5 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-img {
-    color: #212121;
-    width: 48px;
-    height: 48px;
 }
 </style>

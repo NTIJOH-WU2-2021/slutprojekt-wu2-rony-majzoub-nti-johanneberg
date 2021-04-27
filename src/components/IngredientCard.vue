@@ -1,22 +1,33 @@
 <template>
     <div class="parent-group">
-        <img src="../assets/logo.png" alt="">
+        <img :src="`https://spoonacular.com/cdn/ingredients_250x250/${ image }`" alt="">
         <div class="text-group">
-            <h2>Fancy Recipe</h2>
-            <h3>Smaller instructions here.....</h3>
-            <div class="pill-info">
-                <div class="pill-subinfo">
-                    <img src="../assets/schedule.svg" alt="">
-                    <h4>35 min</h4>
-                </div>
-                <div class="pill-subinfo">
-                    <img src="../assets/local_dining.svg" alt="">
-                    <h4>7 ingredients</h4>
-                </div>
-            </div>
+            <h2>{{ name }}</h2>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+  name: "IngredientCard",
+  data() {
+    return {
+      name: "",
+      image: ""
+    }
+  },
+  methods: {
+    showIngredients({name, image}) {
+      console.log("IngredientCard.vue@showIngredients: " + name + image)
+      this.name = name;
+      this.image = image;
+    }
+  },
+  created() {
+    this.$bus.on('searchIngredient', this.showIngredients)
+  }
+}
+</script>
 
 <style scoped>
 .parent-group {
@@ -30,14 +41,14 @@
 }
 .parent-group img {
     align-self: center;
-    width: 40%;
+    width: 144px;
     height: 100%;
     object-fit: cover;
 }
 .text-group {
     display: flex;
     flex-direction: column;
-    padding-left: 128px;
+    padding: 0px 32px;
 }
 
 h2 {
@@ -56,37 +67,5 @@ h3 {
     color: rgba(0, 0, 0, 0.6);
     font-style: normal;
     font-weight: normal;
-}
-.pill-info {
-    background: #E8E8E8;
-    border-radius: 48px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 150%;
-    height: 17.5%;
-}
-.pill-info img {
-    width: 24px;
-    height: 24px;
-}
-.pill-subinfo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 4px;
-}
-.pill-subinfo h4 {
-    margin: 0;
-    padding: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 133%;
-    text-align: center;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
 }
 </style>

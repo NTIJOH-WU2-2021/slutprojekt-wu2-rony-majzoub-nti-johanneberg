@@ -44,6 +44,7 @@ export default {
     width: 144px;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px 0px 0px 8px;
 }
 .text-group {
     display: flex;
@@ -58,6 +59,7 @@ h2 {
     font-size: 24px;
     line-height: 29px;
     color: rgba(0, 0, 0, 0.87);
+    text-transform: capitalize;
 }
 
 h3 {

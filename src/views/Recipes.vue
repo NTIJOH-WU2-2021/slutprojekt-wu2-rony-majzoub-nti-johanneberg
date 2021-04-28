@@ -6,7 +6,8 @@
                 <IngredientSearch />
             </div>
             <!-- använd v:for för att ta results och skapa en ny för varje objekt -->
-            <IngredientCard /> 
+            <ingredient-card
+            ></ingredient-card> 
         </div>
         <div v-show="!showIngredients">
             <div class="top-row">

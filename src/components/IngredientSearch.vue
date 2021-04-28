@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     onIngredientSearchClick() {
-      const url = `https://api.spoonacular.com/food/ingredients/search?query=${this.search}&apiKey=${config.apiKey}`;
+      const url = `https://api.spoonacular.com/food/ingredients/search?query=${this.search}&apiKey=${config.apiKey}&metaInformation=true`;
       fetch(url).then((response) => {
         if (!response.ok) {
           // Ifall vi inte fick en 2xx response, avbryt kedjan här (reject)

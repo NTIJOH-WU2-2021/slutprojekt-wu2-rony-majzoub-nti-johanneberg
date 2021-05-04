@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import config from '@/appConfig.js';
+
 export default {
   name: "IngredientSearch",
   data() {
@@ -24,21 +24,7 @@ export default {
   },
   methods: {
     onIngredientSearchClick() {
-      const url = `https://api.spoonacular.com/food/ingredients/search?query=${this.search}&apiKey=${config.apiKey}&metaInformation=true`;
-      fetch(url).then((response) => {
-        if (!response.ok) {
-          // Ifall vi inte fick en 2xx response, avbryt kedjan här (reject)
-          throw new Error("No matching location.");
-        } else {
-          // Annars konverterar vi svaret till ett JS objekt
-          return response.json();
-        }        
-      }).then((IngredientInfo) => {
-        console.log(IngredientInfo);
-        this.$bus.emit('searchIngredient', { name:`${IngredientInfo.results[0].name}`, image:`${IngredientInfo.results[0].image}` });
-      }).catch((reason) => {
-        alert(reason);
-      })
+      this.$bus.emit('searchIngredient', this.search);
     },
     // onRecipeSearchClick() {
     //   const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${this.ingredients}&apiKey=${config.apiKey}`;

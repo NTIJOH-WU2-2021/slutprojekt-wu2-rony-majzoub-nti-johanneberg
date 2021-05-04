@@ -1,8 +1,8 @@
 <template>
     <div class="parent-group">
-        <img :src="`https://spoonacular.com/cdn/ingredients_250x250/${ image }`" alt="">
+        <img :src="`https://spoonacular.com/cdn/ingredients_250x250/${ ingredient.image }`" alt="">
         <div class="text-group">
-            <h2>{{ name }}</h2>
+            <h2>{{ ingredient.name }}</h2>
         </div>
     </div>
 </template>
@@ -10,21 +10,14 @@
 <script>
 export default {
   name: "IngredientCard",
+  props: [
+    "ingredient"
+  ],
   data() {
     return {
       name: "",
       image: ""
     }
-  },
-  methods: {
-    showIngredients({name, image}) {
-      console.log("IngredientCard.vue@showIngredients: " + name + image)
-      this.name = name;
-      this.image = image;
-    }
-  },
-  created() {
-    this.$bus.on('searchIngredient', this.showIngredients)
   }
 }
 </script>
@@ -38,6 +31,7 @@ export default {
     border-radius: 8px;
     margin-bottom: 24px;
     text-decoration: none;
+    height: 10vh;
 }
 .parent-group img {
     align-self: center;

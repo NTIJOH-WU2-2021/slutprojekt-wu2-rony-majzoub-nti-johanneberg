@@ -1,27 +1,21 @@
 <template>
-    <div class="parent-group">
-        <img :src="`https://spoonacular.com/cdn/ingredients_250x250/${ $route.params.image }`" alt="">
+    <router-link class="parent-group" :to="`/${ingredient.id}`">
+        <img :src="`https://spoonacular.com/cdn/ingredients_250x250/${ ingredient.image }`" alt="">
         <div class="text-group">
-            <h2>{{ $route.params.name }}</h2>
+            <h2>{{ ingredient.name }}</h2>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
 export default {
-  name: "IngredientCard",
+  name: "IngredientResult",
   props: {
+    ingredient: Object,
     name: String,
     image: String,
-    id: Number,
+    id: Number
   }
-  // data() {
-  //   return {
-  //     name: "",
-  //     image: "",
-  //     id: ""
-  //   }
-  // }
 }
 </script>
 

@@ -26,11 +26,13 @@ const routes = [
     path: "/instructions",
     name: "Instructions",
     component: Instructions,
+    props: true,
   },
   {
-    path: "/ingredients",
+    path: "/:id",
     name: "Ingredients",
     component: Ingredients,
+    props: true,
   },
 ];
 

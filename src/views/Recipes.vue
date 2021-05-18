@@ -7,11 +7,11 @@
                 <IngredientSearch />
             </div>
             <h2 v-if="Ingredients.totalResults == 0">We couldn't find any results. Try searching for another ingredient.</h2>
-            <ingredient-card
+            <ingredient-result
             v-for="ingredient in Ingredients.results" 
             :key="ingredient.id" 
             :ingredient="ingredient"
-            ></ingredient-card> 
+            ></ingredient-result> 
         </div>
       </transition>
         <div v-show="!showIngredients">
@@ -28,7 +28,7 @@
 <script>
 import IngredientSearch from "@/components/IngredientSearch.vue";
 import RecipeCard from "@/components/RecipeCard.vue";
-import IngredientCard from "@/components/IngredientCard.vue";
+import IngredientResult from "@/components/IngredientResult.vue";
 import config from '@/appConfig.js';
 
 
@@ -37,13 +37,19 @@ export default {
   components: {
       IngredientSearch,
       RecipeCard,
-      IngredientCard,
+      IngredientResult,
+  },
+  props: {
+    name: String,
+    image: String,
+    id: String,
   },
   data() {
-    //   spara results här, kanske som en variabel, så du kan iterera arrayen i din v:for där uppe!
     return {
       showIngredients: false,
-      Ingredients: {}
+      Ingredients: {
+        results: []
+      }
     }
   },
   methods: {
@@ -66,6 +72,8 @@ export default {
         console.log(IngredientInfo);
         this.Ingredients = IngredientInfo;
         this.showIngredients = true;
+        IngredientInfo = JSON.parse(localStorage.getItem("ingredients"));
+        console.log(IngredientInfo);
       }).catch((reason) => {
         alert(reason);
       })

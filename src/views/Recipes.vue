@@ -19,8 +19,11 @@
                 <h1>Welcome to your Recipes.</h1>
                 <IngredientSearch />
             </div>
-            <RecipeCard />
-            <RecipeCard />
+            <recipe-card
+            v-for="recipe in Recipes" 
+            :key="recipe.id" 
+            :recipe="recipe"
+            ></recipe-card> 
         </div>
     </div>
 </template>
@@ -39,17 +42,13 @@ export default {
       RecipeCard,
       IngredientResult,
   },
-  props: {
-    name: String,
-    image: String,
-    id: String,
-  },
   data() {
     return {
       showIngredients: false,
       Ingredients: {
         results: []
-      }
+      },
+      Recipes: {}
     }
   },
   methods: {
@@ -72,13 +71,44 @@ export default {
         console.log(IngredientInfo);
         this.Ingredients = IngredientInfo;
         this.showIngredients = true;
-        IngredientInfo = JSON.parse(localStorage.getItem("ingredients"));
-        console.log(IngredientInfo);
+        var mapped = IngredientInfo.results.map(item => ({ [item.id]: item }) );
+        var newObj = Object.assign({}, ...mapped );
+        console.log(newObj);
+        localStorage.setItem("searchResult", JSON.stringify(newObj))
+        console.log(newObj);
+        let searchResult = JSON.parse(localStorage.getItem("searchResult") || "[]");
+        console.log(searchResult[9003])
+
       }).catch((reason) => {
         alert(reason);
       })
     })
-  },
+    let fridge = JSON.parse(localStorage.getItem("fridge") || "[]");
+    console.log(fridge)
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${fridge.name}&apiKey=${config.apiKey}`
+    fetch(url).then((response) => {
+      if (!response.ok) {
+        // Ifall vi inte fick en 2xx response, avbryt kedjan här (reject)
+        console.log("no recipes found")
+      } else {
+        // Annars konverterar vi svaret till ett JS objekt
+        return response.json();
+      } 
+    }).then((RecipeInfo) => {
+      console.log(RecipeInfo)
+      this.Recipes = RecipeInfo;
+      let mapped = RecipeInfo.map(item => ({ [item.id]: item }) );
+      console.log(mapped)
+      let newObj = Object.assign({}, ...mapped );
+      console.log(newObj)
+      localStorage.setItem("recipes", JSON.stringify(newObj))
+      let recipeResult = JSON.parse(localStorage.getItem("recipes") || "[]");
+      console.log(recipeResult)
+
+    }).catch((reason) => {
+      alert(reason);
+    })
+  }
 }
 </script>
 

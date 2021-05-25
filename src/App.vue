@@ -3,7 +3,7 @@
     <nav>
       <router-link class="header-item" to="/">Recipes</router-link>
       <router-link class="header-item" to="/favorites">Favorites</router-link>
-      <router-link class="header-item" to="/tips">Tips</router-link>
+      <router-link class="header-item" to="/fridge">Fridge</router-link>
     </nav>
   </header>
   <main>
@@ -45,7 +45,7 @@ h1 {
 }
 
 main {
-  padding: 0 10rem 0 10rem;
+  padding: 0 15rem 0 15rem;
   margin-top: 12vh;
   max-width: 100vw;
   display: flex;

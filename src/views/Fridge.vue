@@ -1,5 +1,5 @@
 <template>
     <div>
-        <h1>Welcome to your Tips.</h1>
+        <h1>Welcome to your Fridge.</h1>
     </div>
 </template>

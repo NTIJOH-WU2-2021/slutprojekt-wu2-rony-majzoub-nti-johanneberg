@@ -1,12 +1,23 @@
 <template>
-    <router-link class="parent-group" :to="`/instructions`">
-        <img src="../assets/logo.png" alt="">
+    <router-link class="parent-group" :to="`/instructions/${recipe.id}`">
+        <img :src="`https://spoonacular.com/recipeImages/${recipe.id}-480x360.${recipe.imageType}`" alt="">
         <div class="text-group">
-            <h2>Fancy Recipe</h2>
-            <h3>Smaller instructions here.....</h3>
+            <h2>{{recipe.title}}</h2>
         </div>
     </router-link>
 </template>
+
+<script>
+export default {
+  name: "RecipeCard",
+  props: {
+    recipe: Object,
+    title: String,
+    imageType: String,
+    id: Number,
+  }
+}
+</script>
 
 <style scoped>
 .parent-group {

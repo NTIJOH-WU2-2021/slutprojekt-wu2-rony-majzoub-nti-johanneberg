@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Welcome to your Favorites.</h1>
-    <RecipeCard />
+    <recipe-card
+    v-for="recipe in Recipes" 
+    :key="recipe.id" 
+    :recipe="recipe"
+    ></recipe-card> 
   </div>
 </template>
 
@@ -13,5 +17,14 @@ export default {
   components: {
       RecipeCard,
   },
+  data() {
+    return {
+      Recipes: {}
+    }
+  },
+  created() {
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    this.Recipes = favorites
+  }
 }
 </script>

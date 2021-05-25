@@ -1,36 +1,62 @@
 <template>
-    <div>
-        <div class="top-row">
-            <h1>{{name}}</h1>
-            <IngredientSearch />
-        </div>
-        <IngredientCard />
-    </div>
+  <div>
+    <router-link :to="`/`">back</router-link>
+    <ingredient-card
+    :ingredient="ingredient" 
+    @add-ingredient="onAddIngredient"
+    />
+  </div>
 </template>
 
 <script>
-import IngredientSearch from "@/components/IngredientSearch.vue";
 import IngredientCard from "@/components/IngredientCard.vue";
 
 export default {
   name: 'Ingredients',
   components: {
-      IngredientSearch,
       IngredientCard,
   },
-  props: {
-    name: String,
-    image: String,
-    id: String,
+  data() {
+    return {
+      ingredient: {
+        name: "Name",
+        image: "Image",
+        id: "Id",
+        possibleUnits: "Units"
+      }
+    }
+  },
+  created() {
+    let IngredientInfo = JSON.parse(localStorage.getItem("searchResult") || "[]");
+    console.log(IngredientInfo[this.$route.params.id].name)
+    this.ingredient = IngredientInfo[this.$route.params.id];
   },
   methods: {
-    addIngredient(ingredient) {
-      let ingredients = JSON.parse(localStorage.getItem("ingredients") || "[]");
-      ingredients.push(ingredient);
-      this.ingredients = ingredients;
-      localStorage.setItem("ingredients", JSON.stringify(ingredients));
-    },
-  },
+    onAddIngredient() {
+      let IngredientInfo = JSON.parse(localStorage.getItem("searchResult") || "[]");
+      console.log(IngredientInfo[this.$route.params.id])
+      let Ingredient = IngredientInfo[this.$route.params.id];
+      let fridge = JSON.parse(localStorage.getItem("fridge") || "[]");
+      let fridgeArray = Array.from(fridge)
+      console.log(fridgeArray)
+      fridgeArray.push(Ingredient)
+      console.log(fridgeArray)
+      let newObj = Object.assign({}, ...fridgeArray );
+      localStorage.setItem("fridge", JSON.stringify(newObj))
+      console.log(Ingredient);
+      let test = JSON.parse(localStorage.getItem("fridge") || "[]");
+      console.log(test)
+      // let IngredientInfo = JSON.parse(localStorage.getItem("searchResult") || "[]");
+      // console.log(IngredientInfo[this.$route.params.id])
+      // let Ingredient = IngredientInfo[this.$route.params.id];
+      // let fridge = JSON.parse(localStorage.getItem("fridge") || "[]");
+      // fridge.push(Ingredient)
+      // localStorage.setItem("fridge", JSON.stringify(fridge))
+      // console.log(Ingredient);
+      // let test = JSON.parse(localStorage.getItem("fridge") || "[]");
+      // console.log(test)
+    }
+  }
 }
 </script>
 
@@ -39,5 +65,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+h1 {
+  text-transform: capitalize;
 }
 </style>

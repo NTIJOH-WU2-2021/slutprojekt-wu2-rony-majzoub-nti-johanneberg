@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Recipes from "../views/Recipes.vue";
 import Favorites from "../views/Favorites.vue";
-import Tips from "../views/Tips.vue";
+import Fridge from "../views/Fridge.vue";
 import Instructions from "../views/Instructions.vue"
 import Ingredients from "../views/Ingredients.vue";
 
@@ -18,12 +18,12 @@ const routes = [
     component: Favorites,
   },
   {
-    path: "/tips",
-    name: "Tips",
-    component: Tips,
+    path: "/fridge",
+    name: "Fridge",
+    component: Fridge,
   },
   {
-    path: "/instructions",
+    path: "/instructions/:id",
     name: "Instructions",
     component: Instructions,
     props: true,

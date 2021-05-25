@@ -34,8 +34,9 @@ export default {
     align-self: center;
     width: 144px;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px 0px 0px 8px;
+    background-color: #FFFFFF;
 }
 .text-group {
     display: flex;
